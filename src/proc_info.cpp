@@ -1,3 +1,4 @@
+// Copyright 2024 kus-system-security-team-1
 #include "..\include\proc_info.h"
 
 BasicProcInfo::BasicProcInfo() {
@@ -29,7 +30,8 @@ std::wstring BasicProcInfo::get_process_name(DWORD pid) {
     if (proc_handle) {
         WCHAR buffer[MAX_PATH] = {};
         DWORD buffer_size = MAX_PATH;
-        if (QueryFullProcessImageNameW(proc_handle, 0, buffer, &buffer_size)) { // System 사용자 프로세스는 확인할 수 없어서, 수정해야 함
+        // System 사용자 프로세스 확인 x
+        if (QueryFullProcessImageNameW(proc_handle, 0, buffer, &buffer_size)) { 
             return std::wstring(buffer);
         }
         CloseHandle(proc_handle);
@@ -71,20 +73,19 @@ BOOL BasicProcInfo::restart_process_by_pid(DWORD pid) {
     PROCESS_INFORMATION processInfo;
 
     if (CreateProcess(
-        proc_path,        
-        NULL,              
-        NULL,               
-        NULL,             
-        FALSE,           
-        0,                
+        proc_path,
+        NULL,
+        NULL,
+        NULL,
+        FALSE,
+        0,
         NULL,
         NULL,
         &startupInfo,
         &processInfo)) {
         CloseHandle(processInfo.hProcess);
         CloseHandle(processInfo.hThread);
-    }
-    else {
+    } else {
         return false;
     }
     return true;

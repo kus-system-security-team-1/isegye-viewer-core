@@ -1,5 +1,6 @@
-#ifndef ISEGYE_VIEWER_CORE_PROC_INFO_H_
-#define ISEGYE_VIEWER_CORE_PROC_INFO_H_
+//Copyright 2024 kus-system-security-team-1
+#ifndef INCLUDE_PROC_INFO_H_
+#define INCLUDE_PROC_INFO_H_
 
 #include <Windows.h>
 #include <WinBase.h>
@@ -14,6 +15,7 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
@@ -40,4 +42,4 @@ public:
 	BOOL restart_process_by_pid(DWORD pid);
 };
 
-#endif
+#endif // INCLUDE_PROC_INFO_H_
