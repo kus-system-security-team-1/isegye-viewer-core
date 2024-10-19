@@ -123,7 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\p0her\AppData\Local\Programs\Python\Python312\Include;C:\Users\p0her\AppData\Local\Programs\Python\Python312\Lib\site-packages\pybind11\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\p0her\AppData\Local\Programs\Python\Python312\Include;C:\Users\p0her\AppData\Local\Programs\Python\Python312\Lib\site-packages\pybind11\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,12 +134,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\test.cpp" />
+    <ClCompile Include="src\history.cpp" />
+    <ClCompile Include="src\network.cpp" />
+    <ClCompile Include="src\pe.cpp" />
+    <ClCompile Include="src\proc_info.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="pyproject.toml" />
     <None Include="README.md" />
     <None Include="setup.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\proc_info.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
