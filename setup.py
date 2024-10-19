@@ -3,17 +3,14 @@
 from distutils.core import setup, Extension
 from distutils import sysconfig
 
-cpp_args = ['-std=c++11', '-stdlib=libc++', '-mmacosx-version-min=10.7']
-
 sfc_module = Extension(
-    'isegye_viewer_core', sources=['src/test.cpp'],
+    'isegye_viewer_core_proc_info', sources=['src/proc_info.cpp'],
     include_dirs=['pybind11/include'],
     language='c++',
-    extra_compile_args=cpp_args,
     )
 
 setup(
-    name='isegye_viewer_core',
+    name='isegye_viewer_core_proc_info',
     version='1.0',
     description='Python package with isegye_viewer_core C++ extension (PyBind11)',
     ext_modules=[sfc_module],
