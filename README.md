@@ -10,6 +10,8 @@ submodule of [./isegye-viewer](https://github.com/kus-system-security-team-1/ise
 
 [4. Branch Flow](##branch-flow)
 
+[5. Library](##library)
+
 ## Coding Convention
 
 C++ Code style은 [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)를 기반으로 함.
@@ -125,3 +127,10 @@ bin/ - 빌드된 실행 파일
 ## Branch flow
 
 [github-flow](https://www.heropy.dev/p/6hdJi6) 사용
+
+## Library
+
+- [pybind11](https://github.com/pybind/pybind11) : Python과 C/C++ 연동하기 위한 라이브러리 - Boost.Python 보다 쓰기 쉬움
+	
+	visual studio에서 C++로 pybind11 쓰면서 python 으로 테스트 하고 싶을 때, 해당 microsoft guide 보면서 세팅하면 테스트 할 수 있음
+	- [Visual Studio에서 Python용 C++ 확장 만들기](https://learn.microsoft.com/ko-kr/visualstudio/python/working-with-c-cpp-python-in-visual-studio?view=vs-2022)
