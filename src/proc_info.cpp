@@ -1,4 +1,4 @@
-// Copyright 2024 kus-system-security-team-1
+癤�// Copyright 2024 kus-system-security-team-1
 #include "..\include\proc_info.h"
 
 BasicProcInfo::BasicProcInfo() {
@@ -30,8 +30,7 @@ std::wstring BasicProcInfo::get_process_name(DWORD pid) {
     if (proc_handle) {
         WCHAR buffer[MAX_PATH] = {};
         DWORD buffer_size = MAX_PATH;
-        // System 사용자 프로세스 확인 x
-        if (QueryFullProcessImageNameW(proc_handle, 0, buffer, &buffer_size)) { 
+        if (QueryFullProcessImageNameW(proc_handle, 0, buffer, &buffer_size)) {
             return std::wstring(buffer);
         }
         CloseHandle(proc_handle);
@@ -39,7 +38,7 @@ std::wstring BasicProcInfo::get_process_name(DWORD pid) {
     return nullptr;
 }
 
-WCHAR *BasicProcInfo::get_process_owner(DWORD pid) {
+WCHAR* BasicProcInfo::get_process_owner(DWORD pid) {
 }
 
 SIZE_T BasicProcInfo::get_virtual_mem_usage(DWORD pid) {
@@ -54,25 +53,26 @@ _IO_COUNTERS BasicProcInfo::get_disk_io(DWORD pid) {
 BOOL BasicProcInfo::restart_process_by_pid(DWORD pid) {
     HANDLE proc_handle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_TERMINATE | PROCESS_VM_READ, FALSE, pid);
     if (proc_handle == NULL) {
-        return false;
+        return FALSE;
     }
 
-    LPSTR proc_path;
-    if (GetModuleFileNameEx(proc_handle, NULL, proc_path, MAX_PATH) == 0) {
+    WCHAR proc_path[MAX_PATH] = { 0 };
+    if (GetModuleFileNameExW(proc_handle, NULL, proc_path, MAX_PATH) == 0) {
         CloseHandle(proc_handle);
-        return false;
+        return FALSE;
     }
 
     if (!TerminateProcess(proc_handle, 0)) {
         CloseHandle(proc_handle);
-        return false;
+        return FALSE;
     }
     CloseHandle(proc_handle);
 
-    STARTUPINFO startupInfo = { sizeof(startupInfo) };
-    PROCESS_INFORMATION processInfo;
+    STARTUPINFOW startupInfo = { 0 };
+    startupInfo.cb = sizeof(startupInfo);
+    PROCESS_INFORMATION processInfo = { 0 };
 
-    if (CreateProcess(
+    if (!CreateProcessW(
         proc_path,
         NULL,
         NULL,
@@ -83,12 +83,12 @@ BOOL BasicProcInfo::restart_process_by_pid(DWORD pid) {
         NULL,
         &startupInfo,
         &processInfo)) {
-        CloseHandle(processInfo.hProcess);
-        CloseHandle(processInfo.hThread);
-    } else {
-        return false;
+        return FALSE;
     }
-    return true;
+
+    CloseHandle(processInfo.hProcess);
+    CloseHandle(processInfo.hThread);
+    return TRUE;
 }
 
 BOOL BasicProcInfo::get_all_processes_impl() {

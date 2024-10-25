@@ -3,9 +3,11 @@
 from distutils.core import setup, Extension
 from distutils import sysconfig
 
+import pybind11
+
 sfc_module = Extension(
     'isegye_viewer_core_proc_info', sources=['src/proc_info.cpp'],
-    include_dirs=['pybind11/include'],
+    include_dirs=[pybind11.get_include()],
     language='c++',
     )
 

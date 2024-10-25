@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "isegye-viewer-core", "isegye-viewer-core.vcxproj", "{8A51D5C6-4782-4BD6-8EE9-AD36AF0408CB}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "isegye-viewer-core-python", "..\isegye-viewer-core-python\isegye-viewer-core-python.pyproj", "{DAF735C9-C642-4CCD-B4AB-C80068D092DC}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "isegye-viewer-core-python", "..\isegye-viewer-core-python\isegye-viewer-core-python.pyproj", "{1CB93D4B-7958-4667-89B6-6FAADAC71387}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,12 +28,12 @@ Global
 		{8A51D5C6-4782-4BD6-8EE9-AD36AF0408CB}.Release|x64.ActiveCfg = Release|x64
 		{8A51D5C6-4782-4BD6-8EE9-AD36AF0408CB}.Release|x86.ActiveCfg = Release|Win32
 		{8A51D5C6-4782-4BD6-8EE9-AD36AF0408CB}.Release|x86.Build.0 = Release|Win32
-		{DAF735C9-C642-4CCD-B4AB-C80068D092DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DAF735C9-C642-4CCD-B4AB-C80068D092DC}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{DAF735C9-C642-4CCD-B4AB-C80068D092DC}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{DAF735C9-C642-4CCD-B4AB-C80068D092DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DAF735C9-C642-4CCD-B4AB-C80068D092DC}.Release|x64.ActiveCfg = Release|Any CPU
-		{DAF735C9-C642-4CCD-B4AB-C80068D092DC}.Release|x86.ActiveCfg = Release|Any CPU
+		{1CB93D4B-7958-4667-89B6-6FAADAC71387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CB93D4B-7958-4667-89B6-6FAADAC71387}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1CB93D4B-7958-4667-89B6-6FAADAC71387}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1CB93D4B-7958-4667-89B6-6FAADAC71387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CB93D4B-7958-4667-89B6-6FAADAC71387}.Release|x64.ActiveCfg = Release|Any CPU
+		{1CB93D4B-7958-4667-89B6-6FAADAC71387}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
