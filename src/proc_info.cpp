@@ -279,6 +279,69 @@ BOOL BasicProcInfo::restart_process_by_pid(DWORD pid) {
     return TRUE;
 }
 
+std::vector<std::wstring> BasicProcInfo::get_process_modules(DWORD pid) {
+    std::vector<std::wstring> module_list;
+
+    HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, pid);
+    if (hProcess == NULL) {
+        OutputDebugStringW(L"Failed to open process for getting modules.");
+        return module_list;
+    }
+
+    HMODULE hMods[1024];
+    DWORD cbNeeded;
+
+    if (EnumProcessModulesEx(hProcess, hMods, sizeof(hMods), &cbNeeded, LIST_MODULES_ALL)) {
+        size_t modules_count = cbNeeded / sizeof(HMODULE);
+        WCHAR szModName[MAX_PATH];
+
+        for (size_t i = 0; i < modules_count; i++) {
+            if (GetModuleFileNameExW(hProcess, hMods[i], szModName, sizeof(szModName) / sizeof(WCHAR))) {
+                module_list.push_back(std::wstring(szModName));
+            }
+        }
+    }
+    else {
+        OutputDebugStringW(L"Failed to enumerate process modules.");
+    }
+
+    CloseHandle(hProcess);
+    return module_list;
+}
+
+bool BasicProcInfo::is_module_loaded(DWORD pid, const std::wstring& module_name) {
+    HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, pid);
+    if (hProcess == NULL) {
+        OutputDebugStringW(L"Failed to open process for checking module.");
+        return false;
+    }
+
+    HMODULE hMods[1024];
+    DWORD cbNeeded;
+    bool module_found = false;
+
+    if (EnumProcessModulesEx(hProcess, hMods, sizeof(hMods), &cbNeeded, LIST_MODULES_ALL)) {
+        size_t modules_count = cbNeeded / sizeof(HMODULE);
+        WCHAR szModName[MAX_PATH];
+
+        for (size_t i = 0; i < modules_count; i++) {
+            if (GetModuleFileNameExW(hProcess, hMods[i], szModName, sizeof(szModName) / sizeof(WCHAR))) {
+                std::wstring modName(szModName);
+                if (_wcsicmp(modName.c_str(), module_name.c_str()) == 0) {
+                    module_found = true;
+                    break;
+                }
+            }
+        }
+    }
+    else {
+        OutputDebugStringW(L"Failed to enumerate process modules.");
+    }
+
+    CloseHandle(hProcess);
+    return module_found;
+}
+
 PYBIND11_MODULE(isegye_viewer_core_proc_info, m) {
     py::class_<BasicProcInfo>(m, "BasicProcInfo")
         .def(py::init())
@@ -288,7 +351,10 @@ PYBIND11_MODULE(isegye_viewer_core_proc_info, m) {
         .def("get_process_owner", &BasicProcInfo::get_process_owner)
         .def("get_virtual_mem_usage", &BasicProcInfo::get_virtual_mem_usage)
         .def("get_current_cpu_usage", &BasicProcInfo::get_current_cpu_usage)
-        .def("get_disk_io", &BasicProcInfo::get_disk_io);
+        .def("get_disk_io", &BasicProcInfo::get_disk_io)
+        .def("get_process_modules", &BasicProcInfo::get_process_modules)
+        .def("is_module_loaded", &BasicProcInfo::is_module_loaded);
+
 
     py::class_<DiskIOCounters>(m, "DiskIOCounters")
         .def_readonly("ReadOperationCount", &DiskIOCounters::ReadOperationCount)
