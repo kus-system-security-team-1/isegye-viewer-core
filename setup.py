@@ -9,6 +9,7 @@ sfc_module = Extension(
     'isegye_viewer_core_proc_info', sources=['src/proc_info.cpp'],
     include_dirs=[pybind11.get_include()],
     language='c++',
+    libraries=['Advapi32', 'Psapi'],
     )
 
 setup(
