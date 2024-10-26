@@ -1,4 +1,4 @@
-//Copyright 2024 kus-system-security-team-1
+// Copyright 2024 kus-system-security-team-1
 #ifndef INCLUDE_PROC_INFO_H_
 #define INCLUDE_PROC_INFO_H_
 
@@ -19,6 +19,7 @@
 #include <securitybaseapi.h>
 #include <string>
 #include <tchar.h>
+#include <userenv.h>
 #include <vector>
 #include <WinBase.h>
 #include <Windows.h>
@@ -30,28 +31,27 @@
 namespace py = pybind11;
 
 struct DiskIOCounters {
-	uint64_t ReadOperationCount;
-	uint64_t WriteOperationCount;
-	uint64_t OtherOperationCount;
-	uint64_t ReadTransferCount;
-	uint64_t WriteTransferCount;
-	uint64_t OtherTransferCount;
+    ULONGLONG read_operation_count;
+    ULONGLONG write_operation_count;
+    ULONGLONG other_operation_count;
+    ULONGLONG read_transfer_count;
+    ULONGLONG write_transfer_count;
+    ULONGLONG other_transfer_count;
 };
 
 class BasicProcInfo {
 public:
-	BasicProcInfo();
-	~BasicProcInfo();
+    BasicProcInfo();
+    ~BasicProcInfo();
 
-	std::vector<DWORD> get_all_processes();
-	std::wstring get_process_name(DWORD pid);
-	std::wstring get_process_owner(DWORD pid);
-	SIZE_T get_virtual_mem_usage(DWORD pid);
-	double get_current_cpu_usage(DWORD pid);
-	DiskIOCounters get_disk_io(DWORD pid);
-	BOOL restart_process_by_pid(DWORD pid);
-	std::vector<std::wstring> get_process_modules(DWORD pid);
-	bool is_module_loaded(DWORD pid, const std::wstring& module_name);
+    std::vector<DWORD> getAllProcesses();
+    BOOL restartProcessByPid(DWORD pid);
+    std::wstring getProcessName(DWORD pid);
+    std::wstring getProcessOwner(DWORD pid);
+    SIZE_T getVirtualMemUsage(DWORD pid);
+    double getCurrentCpuUsage(DWORD pid);
+    DiskIOCounters getDiskIo(DWORD pid);
+    std::vector<std::wstring> getProcessModules(DWORD pid);
+    bool isModuleLoaded(DWORD pid, const std::wstring& module_name);
 };
-
 #endif // INCLUDE_PROC_INFO_H_

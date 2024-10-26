@@ -17,6 +17,9 @@ submodule of [./isegye-viewer](https://github.com/kus-system-security-team-1/ise
 C++ Code style은 [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)를 기반으로 함.
 그에 따라 [cpplint](https://github.com/cpplint/cpplint) 를 사용해 code check를 꼭 해주세요
 
+함수는 Camel
+변수는 snake
+
 ## Commit Convention
 
 commit message의 형식
