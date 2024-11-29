@@ -249,7 +249,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(UserProfile)\AppData\Local\Programs\Python\Python312\Lib\site-packages\pybind11\include;C:\Users\asuspc\AppData\Local\Programs\Python\Python312\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(UserProfile)\AppData\Local\Programs\Python\Python312\Include;$(UserProfile)\AppData\Local\Programs\Python\Python312\Lib\site-packages\pybind11\include;C:\Users\asuspc\AppData\Local\Programs\Python\Python312\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -290,6 +290,9 @@
     <None Include="setup.py" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\history.h" />
+    <ClInclude Include="include\network.h" />
+    <ClInclude Include="include\pe.h" />
     <ClInclude Include="include\proc_info.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
