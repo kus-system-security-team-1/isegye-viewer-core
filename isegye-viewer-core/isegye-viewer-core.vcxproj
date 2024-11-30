@@ -126,8 +126,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetExt>.pyd</TargetExt>
-    <IntDir>$(ProjectDir)\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
-    <OutDir>$(ProjectDir)\Build\$(Platform)$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\..\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|x64'">
     <TargetExt>.pyd</TargetExt>
@@ -135,28 +135,28 @@
     <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(ProjectDir)\Build\$(Platform)$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\..\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">
-    <OutDir>$(ProjectDir)\Build\$(Platform)$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\..\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(ProjectDir)\Build\$(Platform)$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\..\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">
     <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\..\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(ProjectDir)\Build\$(Platform)$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\..\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMT|x64'">
-    <OutDir>$(ProjectDir)\Build\$(Platform)$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\..\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
