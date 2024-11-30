@@ -1,9 +1,0 @@
-﻿  history.cpp
-C:\Users\kewool\project\isegye-viewer\isegye-viewer-core\isegye-viewer-core\src\history.cpp(67,52): warning C4267: '인수': 'size_t'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  network.cpp
-  pe.cpp
-  proc_info.cpp
-  코드를 생성하고 있습니다...
-C:\Users\kewool\project\isegye-viewer\isegye-viewer-core\isegye-viewer-core\src\history.cpp(52,1): warning C4172: 지역 변수 또는 임시: lpName의 주소를 반환하고 있습니다.
-     C:\Users\kewool\project\isegye-viewer\isegye-viewer-core\isegye-viewer-core\\..\Build\x64Debug\isegye-viewer-core.lib 라이브러리 및 C:\Users\kewool\project\isegye-viewer\isegye-viewer-core\isegye-viewer-core\\..\Build\x64Debug\isegye-viewer-core.exp 개체를 생성하고 있습니다.
-  isegye-viewer-core.vcxproj -> C:\Users\kewool\project\isegye-viewer\isegye-viewer-core\Build\x64Debug\isegye-viewer-core.dll
