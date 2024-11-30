@@ -1,0 +1,47 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>1cb93d4b-7958-4667-89b6-6faadac71387</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>isegye_viewer_core_python.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>isegye-viewer-core-python</Name>
+    <RootNamespace>isegye-viewer-core-python</RootNamespace>
+    <TestFramework>Pytest</TestFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="isegye_viewer_core_python.py" />
+    <Compile Include="isegye_viewer_core_test\test_proc_info.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\isegye-viewer-core\isegye-viewer-core.vcxproj">
+      <Name>isegye-viewer-core</Name>
+      <Project>{8a51d5c6-4782-4bd6-8ee9-ad36af0408cb}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="isegye_viewer_core_test\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
