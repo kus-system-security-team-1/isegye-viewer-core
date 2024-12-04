@@ -123,7 +123,7 @@ bool History::LogProcessTimesToFile(DWORD pid, WCHAR* logFilePath) {
 	return TRUE;
 }
 
-PYBIND11_MODULE(isegye_viewer_core_history, m) {
+void bind_history(py::module_& m) {
 	py::class_<History>(m, "History")
 		.def(py::init())
 		.def("getAccountNameOfProcess", &History::getAccountNameOfProcess)

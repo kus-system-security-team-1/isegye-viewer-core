@@ -299,6 +299,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="src\history.cpp" />
     <ClCompile Include="src\network.cpp" />
     <ClCompile Include="src\pe.cpp" />

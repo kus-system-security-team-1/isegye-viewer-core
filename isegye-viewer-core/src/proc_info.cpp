@@ -385,7 +385,7 @@ BOOL BasicProcInfo::terminateProcessByPid(DWORD pid) {
     return TRUE;
 }
 
-PYBIND11_MODULE(isegye_viewer_core_proc_info, m) {
+void bind_proc_info(py::module_& m) {
     py::class_<BasicProcInfo>(m, "BasicProcInfo")
         .def(py::init())
         .def("getAllProcesses", &BasicProcInfo::getAllProcesses)
