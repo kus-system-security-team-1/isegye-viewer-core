@@ -46,6 +46,7 @@ public:
 
     std::vector<DWORD> getAllProcesses();
     BOOL restartProcessByPid(DWORD pid);
+    BOOL terminateProcessByPid(DWORD pid);
     std::wstring getProcessName(DWORD pid);
     std::wstring getProcessOwner(DWORD pid);
     SIZE_T getVirtualMemUsage(DWORD pid);
