@@ -128,35 +128,43 @@
     <TargetExt>.pyd</TargetExt>
     <IntDir>$(ProjectDir)\..\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
     <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
+    <TargetName>isegye_viewer_core</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|x64'">
     <TargetExt>.pyd</TargetExt>
     <IntDir>$(ProjectDir)\..\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
     <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
+    <TargetName>isegye_viewer_core</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\..\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>isegye_viewer_core</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">
     <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\..\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>isegye_viewer_core</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\..\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>isegye_viewer_core</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">
     <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\..\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>isegye_viewer_core</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\..\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>isegye_viewer_core</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMT|x64'">
     <OutDir>$(ProjectDir)\..\Build\$(Platform)$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\..\Output\$(Platform)$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>isegye_viewer_core</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
