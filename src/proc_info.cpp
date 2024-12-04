@@ -363,11 +363,33 @@ BOOL BasicProcInfo::restartProcessByPid(DWORD pid) {
     return TRUE;
 }
 
+BOOL BasicProcInfo::terminateProcessByPid(DWORD pid) {
+    // Open Process by PROCESS_TERMINATE previllage
+    HANDLE proc_handle = OpenProcess(PROCESS_TERMINATE, FALSE, pid);
+    if (proc_handle == NULL) {
+        OutputDebugStringW(L"Failed to open process for termination.");
+        return FALSE;
+    }
+
+    // Kill process
+    if (!TerminateProcess(proc_handle, 0)) {
+        OutputDebugStringW(L"Failed to terminate process.");
+        CloseHandle(proc_handle);
+        return FALSE;
+    }
+
+    CloseHandle(proc_handle);
+    OutputDebugStringW(L"Process terminated successfully.");
+    return TRUE;
+}
+
+
 PYBIND11_MODULE(isegye_viewer_core_proc_info, m) {
     py::class_<BasicProcInfo>(m, "BasicProcInfo")
         .def(py::init())
         .def("getAllProcesses", &BasicProcInfo::getAllProcesses)
         .def("restartProcessByPid", &BasicProcInfo::restartProcessByPid)
+        .def("terminateProcessByPid", &BasicProcInfo::terminateProcessByPid)
         .def("getProcessName", &BasicProcInfo::getProcessName)
         .def("getProcessOwner", &BasicProcInfo::getProcessOwner)
         .def("getVirtualMemUsage", &BasicProcInfo::getVirtualMemUsage)
