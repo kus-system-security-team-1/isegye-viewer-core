@@ -227,6 +227,7 @@ double BasicProcInfo::getCurrentCpuUsage(DWORD pid) {
     return cpu_usage;
 }
 
+/* 0.1.4 */
 DiskIOCounters BasicProcInfo::getDiskIo(DWORD pid) {
     HANDLE proc_handle = OpenProcess(PROCESS_QUERY_INFORMATION, FALSE, pid);
     if (proc_handle == NULL) {
@@ -318,6 +319,7 @@ bool BasicProcInfo::isModuleLoaded(DWORD pid, const std::wstring& module_name) {
     return module_found;
 }
 
+/* 0.1.6 */
 BOOL BasicProcInfo::restartProcessByPid(DWORD pid) {
     HANDLE proc_handle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_TERMINATE | PROCESS_VM_READ, FALSE, pid);
     if (proc_handle == NULL) {
