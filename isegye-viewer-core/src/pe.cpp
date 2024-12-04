@@ -60,7 +60,7 @@ DetectEntropyType PE::detectEntropyLevel(double entropy) {
 	}
 }
 
-PYBIND11_MODULE(isegye_viewer_core_pe, m) {
+PYBIND11_MODULE(isegye_viewer_core, m) {
 	py::enum_<DetectEntropyType>(m, "DetectEntropyType")
 		.value("HIGH", DetectEntropyType::HIGH)
 		.value("MIDDLE", DetectEntropyType::MIDDLE)
