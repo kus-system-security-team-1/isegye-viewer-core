@@ -82,42 +82,45 @@ void History::WriteFileTimeToLog(FILETIME ft, FILE* logFile) {
 bool History::LogProcessTimesToFile(DWORD pid, WCHAR* logFilePath) {
 	HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION, FALSE, pid);
 	if (hProcess == NULL) {
-		printf("Failed to open process. Error: %lu\n", GetLastError());
+		wprintf(L"Failed to open process. Error: %lu\n", GetLastError());
 		return FALSE;
 	}
 
 	FILETIME creationTime, exitTime, kernelTime, userTime;
 	if (GetProcessTimes(hProcess, &creationTime, &exitTime, &kernelTime, &userTime)) {
-		FILE* logFile = _wfopen(logFilePath, L"a"); // Open in append mode
-		if (logFile == NULL) {
-			printf("Failed to open log file: %ls\n", logFilePath);
+		FILE* logFile = nullptr;
+		errno_t err = _wfopen_s(&logFile, logFilePath, L"a");
+		if (err != 0 || logFile == nullptr) {
+			wprintf(L"Failed to open log file: %ls\n", logFilePath);
 			CloseHandle(hProcess);
 			return FALSE;
 		}
 
-		fprintf(logFile, "Process ID: %lu\n", pid);
+		fwprintf(logFile, L"Process ID: %lu\n", pid);
 
-		fprintf(logFile, "Start Time: ");
+		fwprintf(logFile, L"Start Time: ");
 		WriteFileTimeToLog(creationTime, logFile);
 
 		if (exitTime.dwLowDateTime == 0 && exitTime.dwHighDateTime == 0) {
-			fprintf(logFile, "End Time: The process is still running.\n");
+			fwprintf(logFile, L"End Time: The process is still running.\n");
 		}
 		else {
-			fprintf(logFile, "End Time: ");
+			fwprintf(logFile, L"End Time: ");
 			WriteFileTimeToLog(exitTime, logFile);
 		}
 
-		fprintf(logFile, "-----------------------\n");
+		fwprintf(logFile, L"-----------------------\n");
 		fclose(logFile);
-		printf("Process times logged to %ls\n", logFilePath);
+		wprintf(L"Process times logged to %ls\n", logFilePath);
 	}
 	else {
-		printf("Failed to retrieve process times. Error: %lu\n", GetLastError());
+		wprintf(L"Failed to retrieve process times. Error: %lu\n", GetLastError());
+		CloseHandle(hProcess);
 		return FALSE;
 	}
 
 	CloseHandle(hProcess);
+	return TRUE;
 }
 
 PYBIND11_MODULE(isegye_viewer_core_history, m) {
