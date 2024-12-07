@@ -52,7 +52,7 @@ DetectEntropyType PE::detectEntropyLevel(double entropy) {
 	if (entropy >= 7.8) {
 		return HIGH;
 	}
-	else if (entropy < 7.8 && 7.5 >= entropy) {
+	else if (6.5 <= entropy && entropy < 7.8) {
 		return MIDDLE;
 	}
 	else {
