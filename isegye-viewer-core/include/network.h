@@ -10,12 +10,21 @@
 #include <psapi.h>
 #include <winbase.h>
 #include <fileapi.h>
+#define NTDDI_VERSION NTDDI_WIN7
+#define _WIN32_WINNT 0x0601
+#define WINVER 0x0601
+#include <windows.h>
+#include <fwpmu.h>
+#include <stdlib.h>
+#pragma comment(lib,"fwpuclnt.lib")
 
 namespace py = pybind11;
 
 class Network {
 public:
 	Network();
+	int blockProcessTraffic(DWORD pid);
+	int unblockProcessTraffic(DWORD pid);
 };
 
 #endif // INCLUDE_NETWORK_H_
